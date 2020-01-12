@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ES5",
+    "allowJs": true,
+    "lib": ["ES5", "ES6", "DOM"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "jsx": "react"
+  },
+  "code": {
+    "rewriteTsConfig": false
+  }
+}
