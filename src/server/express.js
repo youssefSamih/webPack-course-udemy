@@ -22,7 +22,6 @@ server.use(webpackHotMiddleware);
 const staticMiddleware = express.static("dist");
 
 server.use(staticMiddleware);
-
 server.listen(8080, () => {
   console.log("Server is listening");
 })
