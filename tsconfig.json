@@ -5,9 +5,11 @@
     "target": "ES5",
     "allowJs": true,
     "lib": ["ES5", "ES6", "DOM"],
+    "sourceMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "jsx": "react"
+    "jsx": "react",
+    "skipLibCheck": true
   },
   "code": {
     "rewriteTsConfig": false
