@@ -1,11 +1,17 @@
 const path = require("path");
 const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
   entry: {
     main: ["./src/main.js"],
-    ts: ["./src/index.ts"]
+    // ts: ["./src/index.ts"],
+    polyfills: ["./src/angular-polyfills"],
+    angular: ["./src/angular"]
+  },
+  resolve: {
+    extensions: [".js", '.ts']
   },
   mode: "development",
   output: {
@@ -16,6 +22,7 @@ module.exports = {
     contentBase: "dist",
     overlay: true,
     hot: true,
+    historyApiFallback: true,
     stats: {
       colors: true
     }
@@ -23,6 +30,14 @@ module.exports = {
   devtool: "source-map",
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        use: [
+          {
+            loader: "vue-loader"
+          }
+        ]
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -49,7 +64,9 @@ module.exports = {
             loader: "css-loader",
             query: {
               modules: true,
-              localIndentName: "[name]--[local]--[hash:base64:8]"
+              modules: {
+                localIdentName : "[name]--[local]--[hash:base64:8]"
+              }
             }
           }
         ]
@@ -120,7 +137,14 @@ module.exports = {
     ]
   },
   plugins: [
+    new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core/,
+      path.join(__dirname, "./src"),
+      {}
+    ),
     new HTMLWebpackPlugin({
       template: "./src/index.html",
       title: "Link's journal "
