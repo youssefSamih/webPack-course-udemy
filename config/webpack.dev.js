@@ -11,7 +11,10 @@ module.exports = {
     angular: ["./src/angular"]
   },
   resolve: {
-    extensions: [".js", '.ts']
+    extensions: [".js", '.ts'],
+    alias: {
+      vue$: "vue/dist/vue.esm.js"
+    }
   },
   mode: "development",
   output: {
@@ -138,7 +141,7 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core/,

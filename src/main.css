@@ -17,6 +17,8 @@ img {
     border: 5px;
     width: 300px;
     box-shadow: 0 0 20px black;
+    margin: auto;
+    display: block;
 }
 
 h1 {

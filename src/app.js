@@ -23,8 +23,13 @@
 
 import Vue from "vue";
 import App from "./App.vue";
+import Profile from "./components/profile";
+import "./main.css";
 
-new Vue({
-  el: "#app",
-  render: h => h(App)
-})
+window.onload = function () {
+  new Vue({
+    el: "#app",
+    components: { Profile },
+    render: h => h(App)
+  })
+}
